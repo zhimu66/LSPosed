@@ -37,10 +37,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.XC_MethodReplacement;
-import de.robv.android.xposed.XposedBridge;
-import de.robv.android.xposed.XposedHelpers;
+import de.robv.android.geekposed.XC_MethodHook;
+import de.robv.android.geekposed.XC_MethodReplacement;
+import de.robv.android.geekposed.geekposedBridge;
+import de.robv.android.geekposed.XposedHelpers;
 import hidden.HiddenApiBridge;
 
 public class ParasiticManagerHooker {
@@ -194,13 +194,13 @@ public class ParasiticManagerHooker {
                 }
             }
         };
-        XposedBridge.hookAllConstructors(activityClientRecordClass, activityHooker);
+        geekposedBridge.hookAllConstructors(activityClientRecordClass, activityHooker);
 
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1) {
-            XposedBridge.hookAllMethods(XposedHelpers.findClass("android.app.ActivityThread$ApplicationThread", ActivityThread.class.getClassLoader()), "scheduleLaunchActivity", activityHooker);
+            geekposedBridge.hookAllMethods(XposedHelpers.findClass("android.app.ActivityThread$ApplicationThread", ActivityThread.class.getClassLoader()), "scheduleLaunchActivity", activityHooker);
         }
 
-        XposedBridge.hookAllMethods(ActivityThread.class, "handleReceiver", new XC_MethodReplacement() {
+        geekposedBridge.hookAllMethods(ActivityThread.class, "handleReceiver", new XC_MethodReplacement() {
             @Override
             protected Object replaceHookedMethod(MethodHookParam param) {
                 for (var arg : param.args) {
@@ -212,7 +212,7 @@ public class ParasiticManagerHooker {
             }
         });
 
-        XposedBridge.hookAllMethods(ActivityThread.class, "installProvider", new XC_MethodHook() {
+        geekposedBridge.hookAllMethods(ActivityThread.class, "installProvider", new XC_MethodHook() {
             private Context originalContext = null;
 
             @Override
@@ -308,7 +308,7 @@ public class ParasiticManagerHooker {
                 }
             }
         };
-        XposedBridge.hookAllMethods(ActivityThread.class, "performStopActivityInner", stateHooker);
+        geekposedBridge.hookAllMethods(ActivityThread.class, "performStopActivityInner", stateHooker);
         if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O_MR1)
             XposedHelpers.findAndHookMethod(ActivityThread.class, "performDestroyActivity", IBinder.class, boolean.class, int.class, boolean.class, stateHooker);
     }
