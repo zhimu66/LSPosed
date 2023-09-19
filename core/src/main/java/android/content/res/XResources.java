@@ -67,8 +67,8 @@ import de.robv.android.geekposed.geekposedInit;
 import de.robv.android.geekposed.callbacks.XC_LayoutInflated;
 import de.robv.android.geekposed.callbacks.XC_LayoutInflated.LayoutInflatedParam;
 import de.robv.android.geekposed.callbacks.XCallback;
-import xposed.dummy.XResourcesSuperClass;
-import xposed.dummy.XTypedArraySuperClass;
+import geekposed.dummy.XResourcesSuperClass;
+import geekposed.dummy.XTypedArraySuperClass;
 
 /**
  * {@link android.content.res.Resources} subclass that allows replacing individual resources.

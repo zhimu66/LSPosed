@@ -120,8 +120,8 @@ public final class geekposedBridge {
             ClassLoader myCL = geekposedBridge.class.getClassLoader();
             assert myCL != null;
             dummyClassLoader = ResourcesHook.buildDummyClassLoader(myCL.getParent(), resClass.getName(), taClass.getName());
-            dummyClassLoader.loadClass("xposed.dummy.XResourcesSuperClass");
-            dummyClassLoader.loadClass("xposed.dummy.XTypedArraySuperClass");
+            dummyClassLoader.loadClass("geekposed.dummy.XResourcesSuperClass");
+            dummyClassLoader.loadClass("geekposed.dummy.XTypedArraySuperClass");
             geekposedHelpers.setObjectField(myCL, "parent", dummyClassLoader);
         } catch (Throwable throwable) {
             geekposedBridge.log(throwable);

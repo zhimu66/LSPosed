@@ -771,7 +771,7 @@ public class ConfigManager {
                 return false;
             }
             try (var zip = new ZipFile(toGlobalNamespace(apk))) {
-                return zip.getEntry("META-INF/xposed/java_init.list") != null || zip.getEntry("assets/xposed_init") != null;
+                return zip.getEntry("META-INF/xposed/java_init.list") != null || zip.getEntry("assets/geekposed_init") != null;
             } catch (IOException e) {
                 return false;
             }
